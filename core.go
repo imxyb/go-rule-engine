@@ -3,13 +3,13 @@ package ruler
 import (
 	"encoding/json"
 	"errors"
+	"math"
 	"math/rand"
 	"reflect"
 	"regexp"
 	"strconv"
 	"strings"
-
-	"math"
+	"time"
 )
 
 func validLogic(logic string) (string, error) {
@@ -192,6 +192,8 @@ func (r *Rule) fit(v interface{}) bool {
 	}
 
 	switch op {
+	case "now_diff":
+		return float64(time.Now().Unix())-pairNum[0] > pairNum[1]
 	case "=", "eq":
 		if isNum {
 			return pairNum[0] == pairNum[1]
@@ -480,7 +482,7 @@ func isIn(needle, haystack string, isNeedleNum bool) bool {
 			if err != nil {
 				continue
 			}
-			if math.Abs(iNum-oNum) < 1E-5 {
+			if math.Abs(iNum-oNum) < 1e-5 {
 				// 考虑浮点精度问题
 				return true
 			}
