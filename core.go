@@ -474,7 +474,7 @@ func isIn(needle, haystack string, isNeedleNum bool) bool {
 		}
 	}
 	// compatible to "1, 2, 3" and "1,2,3"
-	li := strings.Split(haystack, ",")
+	li := strings.Split(haystack, "{}")
 	for _, o := range li {
 		trimO := strings.TrimLeft(o, " ")
 		if isNeedleNum {
