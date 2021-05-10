@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/satori/go.uuid"
+	"github.com/google/uuid"
 )
 
 /**
@@ -312,7 +312,7 @@ func replaceBiggestBracketContentAtOnce(expr string, mapReplace map[string]strin
 	if flag {
 		// delete last )
 		toReplace = toReplace[:len(toReplace)-1]
-		key := uuid.NewV1().String()
+		key := uuid.New().String()
 
 		result = strings.Replace(result, "("+string(toReplace)+")", key, 1)
 		mapReplace[key] = strings.Trim(string(toReplace), " ")
