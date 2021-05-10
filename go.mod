@@ -1,4 +1,4 @@
-module go-rule-engine
+module github.com/imxyb/go-rule-engine
 
 go 1.15
 
