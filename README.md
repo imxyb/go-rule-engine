@@ -196,9 +196,13 @@ case "1", "nempty":
 // 支持开闭区间格式，val="[,12.1]", "(1, 3]", "(8, )" etc.
 case "<<", "between":
 
-// 与现在的时间戳相比较，val单位为秒
+// 早于现在xx秒，val单位为秒
+// 比如val=10，意味着key的时间戳早于当前时间戳(time.Now.Unix())10秒
+case "early_now":
+	
+// 晚于现在xx秒，val单位为秒
 // 比如val=10，意味着key的时间戳晚于当前时间戳(time.Now.Unix())10秒
-case "now_diff":
+case "later_now":
 
 ```
 

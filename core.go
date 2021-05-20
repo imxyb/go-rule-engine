@@ -192,8 +192,10 @@ func (r *Rule) fit(v interface{}) bool {
 	}
 
 	switch op {
-	case "now_diff":
+	case "early_now":
 		return float64(time.Now().Unix())-pairNum[0] > pairNum[1]
+	case "later_now":
+		return pairNum[0]-float64(time.Now().Unix()) > pairNum[1]
 	case "=", "eq":
 		if isNum {
 			return pairNum[0] == pairNum[1]
